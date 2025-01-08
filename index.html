@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M20</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente para el aprendizaje y diseñar la estructura de datos en Bubble.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a profundizar en Bubble, explorando cómo estructurar nuestras bases de datos para aplicaciones potentes y eficientes. ¡Prepárense para darle forma a sus ideas con datos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo están. Si se sienten listos para diseñar bases de datos complejas, levanten ambas cejas. Si necesitan activar su concentración, hagan círculos con los dedos en el aire."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos tres objetivos importantes: 1. Comprender el proceso de diseño de bases de datos. 2. Aprender cómo estructurar datos en Bubble de manera efectiva. 3. Diseñar la base de datos para nuestra app de hosting, preparándonos para su implementación."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Explorar una herramienta de visualización de bases de datos que simplifica la planificación.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy les presentaré una herramienta que ayuda a visualizar y planificar bases de datos de forma sencilla: DbDiagram.io. Esta plataforma permite a los desarrolladores dibujar la estructura de sus bases de datos como si fuera un diagrama, facilitando la comprensión y el diseño de las mismas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Demostración de DbDiagram.io".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "DbDiagram.io simplifica el diseño de bases de datos con una interfaz intuitiva y visual. Permite conectar tablas con relaciones, lo que facilita la creación de una estructura sólida y funcional. Observen cómo esta herramienta ayuda a organizar nuestros pensamientos y a planificar la estructura de datos de una forma más eficiente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre DbDiagram.io".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les parece, Genios? DbDiagram.io nos muestra cómo las herramientas visuales pueden hacer más comprensible el diseño de bases de datos. Aprenderemos cómo aplicar esta metodología en Bubble para que la planificación de nuestra aplicación sea más clara y efectiva."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Corte por extensión --------------------------------------------------------- -->
+<!-- -------------------------------------------------Continuación por extensión --------------------------------------------------------- -->
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 23 minutos</div>
+        <div class="subtitle">Explorar en detalle el proceso de diseño de bases de datos en Bubble.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción al Diseño de Datos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy nos adentraremos en el corazón de cualquier aplicación: la base de datos. Aprenderemos cómo estructurar nuestros datos en Bubble, una habilidad fundamental para construir aplicaciones potentes y funcionales. Hoy no solo aprenderemos sobre datos, sino que aprenderemos a pensar como arquitectos de información, planeando bases de datos que sean eficientes y escalables para cualquier proyecto que tengan en mente. ¡Prepárense para una inmersión en el mundo de los datos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "La Importancia de la Estructura".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Imaginen que su base de datos es la base de un edificio. Si esta base no está bien diseñada, el edificio se derrumbará, así de importante es el diseño de la misma. En una aplicación, los datos son el alma de todas las funciones. Una estructura bien pensada, nos permite gestionar la información de forma organizada, permitiendo que la app funcione de manera fluida y eficiente. Al planificar cuidadosamente cómo almacenamos y relacionamos nuestros datos en Bubble, podemos crear aplicaciones sólidas, con un gran potencial para crecer y adaptarse a nuevas necesidades con el tiempo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "Proceso de Diseño".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar a construir una base de datos, es esencial entender el proceso de diseño. Primero, identificamos los datos esenciales, aquellos que nuestra app necesita para funcionar. Por ejemplo, en nuestra app de hosting, necesitaremos datos sobre los usuarios, las propiedades y las reservas. Luego, debemos definir cómo se relacionan estos datos.  Esto nos permite organizar la información de manera lógica y evitar redundancia. Es como dibujar un plano antes de empezar una construcción, asegurando que cada elemento tenga su lugar y función en la estructura global."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1.5 minutos):</strong> Proyectar Diapositiva 12 "Identificación de Datos Esenciales".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El primer paso en nuestro proceso de diseño es identificar qué tipo de información vamos a almacenar en nuestra aplicación. Por ejemplo, en una app de hosting, necesitaremos información sobre los usuarios: su nombre, correo electrónico, datos de contacto y un poco sobre ellos. También necesitaremos información sobre las propiedades: ubicación, descripción, precio, número de habitaciones e inclusive fotos. Además de éstos, datos sobre las reservas: fechas, usuarios y propiedades. ¡Este inventario de datos es el cimiento de nuestro diseño! Es crucial ser precisos en esta etapa porque es donde definimos con claridad qué es lo que nuestra app gestionará."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 13 "Tipos de Datos en Bubble".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En Bubble, organizamos los datos en lo que llamamos 'Data Types'.  Un 'Data Type' es como una tabla en una base de datos tradicional, y contiene información sobre un mismo elemento. Por ejemplo, un tipo de dato llamado ‘User’ contendría información sobre cada usuario de nuestra app. Un tipo de dato llamado ‘Property’ almacenaría la información de cada propiedad, y un tipo de dato llamado ‘Booking’ almacenaría información sobre cada reserva. Dentro de cada ‘Data Type’ podemos tener diferentes tipos de información o ‘Fields’, como nombre, correo electrónico, fecha, descripción, etc. Para planificar la estructura de nuestra base de datos, es muy útil usar un diagrama, como el que vimos en la Innovación del día. Al usar un diagrama, podemos visualizar de manera sencilla cuáles son los datos que necesitaremos y cómo se relacionan entre ellos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 14 "Relaciones entre Data Types".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La manera en la que se relacionan nuestros datos, es otro aspecto crucial para estructurar de manera eficiente nuestra base de datos. En Bubble, podemos establecer relaciones entre distintos 'Data Types'. Por ejemplo, un usuario puede tener varias propiedades listadas en nuestra app, y una propiedad puede tener varias reservas. Estas relaciones nos permiten crear sistemas de información más sofisticados. Al definir estas relaciones, podemos navegar y organizar nuestra información de manera lógica, haciendo más fácil su gestión a largo plazo y haciendo nuestras aplicaciones más robustas. Recuerden que en una base de datos relacional los datos no se almacenan en diferentes tablas, sino que se hace referencia a la información de otras tablas. ¡Esto es lo que hace a una base de datos verdaderamente relacional!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (2 minutos):</strong> Proyectar Diapositiva 15 "Campos o Fields".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Dentro de cada 'Data Type' tenemos lo que llamamos 'Fields', los cuales son las diferentes propiedades o características de nuestros datos. Por ejemplo, en el 'Data Type' de 'User' podemos tener ‘Name’, ‘Email’, ‘Phone Number’, etc. Cada 'Field' tiene un tipo de datos específico, como texto, número, fecha, imagen, lista o una relación con otro 'Data Type'. Esto define qué tipo de información puede guardar ese campo. Al asignar los 'Fields' correctamente, garantizamos que nuestra información sea consistente, coherente y usable. También definimos el tipo de dato, por ejemplo, si es un número, texto, un correo, etc. Piensen en esto como una estructura jerárquica: tenemos 'Data Types' y dentro de ellos tenemos 'Fields' que almacenan la información. "</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "Listas y Relaciones".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "En Bubble, un mismo 'Field' puede almacenar un solo valor o una lista de valores, según el tipo de información que necesitemos. Si un usuario tiene varios teléfonos, podríamos crear un 'Field' de tipo lista para registrar todos esos números. Las relaciones en Bubble se crean usando campos de tipo ‘Data Type’, que hacen referencia a información en otro ‘Data Type’. Por ejemplo, en la tabla ‘Booking’, podríamos tener un ‘Field’ de tipo ‘Property’ para relacionar cada reserva con la propiedad correspondiente. Esto nos permite conectar la información de diferentes tablas, haciendo que nuestra app sea más robusta y versátil. Es como crear un mapa de conexiones entre nuestros datos."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "Ejemplo Práctico".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a ver cómo aplicar estos conceptos en nuestra app de hosting. Necesitamos un 'Data Type' para los usuarios: ‘User’ donde guardamos la información básica, como nombre, correo electrónico, etc. También necesitaremos otro ‘Data Type’ para las propiedades: ‘Property’ donde almacenaremos información sobre ubicación, descripción, fotos y precios. Finalmente, necesitaremos un 'Data Type' para las reservas: ‘Booking’ que incluirá fechas, usuarios y propiedades reservadas. Una vez definidos los ‘Data Types’, agregamos los ‘Fields’ necesarios dentro de cada uno, cuidando de establecer las relaciones correctas entre ellos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (2 minutos):</strong> Proyectar Diapositiva 18 "Visualización de la Base de Datos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para comprender mejor cómo funciona nuestra base de datos, es muy útil visualizarla. Podemos utilizar herramientas como DbDiagram.io, la cual vimos en la innovación del día, para crear un diagrama de nuestro modelo de datos. Así podemos representar nuestros 'Data Types', los campos y las relaciones entre ellos. Una buena visualización nos permite validar nuestro diseño y asegurarnos de que nuestra base de datos sea eficiente, bien estructurada y coherente. Esta es una práctica que todo desarrollador de apps debería hacer antes de iniciar con la construcción de una aplicación."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (1.5 minutos):</strong> Proyectar Diapositiva 19 "Consideraciones Técnicas en Bubble".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Además de la lógica de nuestro diseño, es importante conocer cómo Bubble gestiona nuestra información. Bubble crea tablas en su base de datos en la nube para cada uno de nuestros ‘Data Types’.  Esto significa que la información no está guardada en nuestra computadora, sino en un servidor que está accesible en todo momento. Bubble también se encarga de la seguridad de la información, creando copias de seguridad y protegiendo nuestros datos de accesos no autorizados. Este aspecto técnico es fundamental para garantizar la estabilidad y la seguridad de nuestra aplicación, lo cual nos permite enfocarnos en construir funcionalidades y diseñar la interfaz de usuario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (1.5 minutos):</strong> Proyectar Diapositiva 20 "Escalabilidad de la Base de Datos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Al diseñar la base de datos, debemos considerar que nuestra aplicación podría crecer con el tiempo, y es ahí donde entra la escalabilidad de la misma. Por ello, es importante diseñar una estructura que permita agregar nuevas funcionalidades y datos sin comprometer el funcionamiento de nuestra app. La capacidad de Bubble para manejar grandes volúmenes de datos y adaptarse a nuevas necesidades nos brinda la flexibilidad necesaria para crecer con nuestras aplicaciones, asegurándonos que no tendremos que volver a empezar por una mala organización de datos inicial. La clave para lograrlo es siempre iniciar por la planeación, ¡nunca se olviden de ello, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (1 minuto):</strong> Proyectar Diapositiva 21 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de continuar, hagamos una pausa para revisar lo que hemos aprendido hasta ahora. Hemos comprendido el proceso de diseño de una base de datos y la importancia de tener una estructura sólida. Exploramos la forma en la que se organizan los datos en Bubble y cómo se relacionan entre ellos. ¡Estamos avanzando de manera increíble! Recuerden que todo lo que hemos aprendido es crucial para diseñar la base de datos de su aplicación de hosting."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 14 (1 minuto):</strong> Proyectar Diapositiva 22 "Dato Curioso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de pasar al siguiente paso, quiero compartir un dato curioso con ustedes. ¿Sabían que el primer programa de base de datos fue creado en 1963 por el Instituto Tecnológico de Massachusetts (MIT) y fue usado en sistemas de administración de datos del gobierno estadounidense? Imaginen eso, Genios, desde esa época ya se entendía el potencial de organizar la información de forma lógica y eficiente."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Promover la calma y la concentración con una meditación flash.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Meditación Flash".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a relajarnos y renovar nuestra energía con una meditación flash. Siéntense cómodamente, cierren los ojos y concéntrense en su respiración durante un minuto. Inhalen profundo, exhalen lentamente y disfruten este momento de calma."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 24 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Beneficios de la Meditación".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente, Genios! Esta meditación flash nos ayuda a calmar nuestra mente, reducir el estrés y mejorar nuestra concentración, lo cual es esencial para abordar los retos que nos esperan en esta misión."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Organizar los equipos y preparar los materiales para la actividad.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Formación de Equipos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora, por favor reúnanse con los mismos equipos con los que estuvieron trabajando en la última misión. Mantener la continuidad nos ayuda a trabajar con mayor eficiencia. Tienen un minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 27 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 28 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, designen a un representante por equipo para recoger las Magic Tablets. Tienen un minuto para asegurarse de que cada equipo esté listo para continuar."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 29 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 6: Challenge ⏰ Tiempo: 15 minutes</div>
+        <div class="subtitle">Diseñar la base de datos para la app de hosting en Bubble.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 30 "Título del Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de aplicar todo lo que han aprendido en esta misión. Hoy diseñarán la base de datos para su app de hosting, estructurando la información que permitirá que funcione de manera eficiente. ¡Prepárense para planificar los cimientos de su aplicación!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 31 "Diseño de la Base de Datos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "El reto de hoy es diseñar la base de datos para su app de hosting, utilizando los conceptos que exploramos en el Brain Gym. Recuerden que su base de datos debe incluir 'Data Types' para los usuarios, las propiedades y las reservas. Dentro de cada ‘Data Type’, definan los ‘Fields’ necesarios, como nombres, correos electrónicos, precios, ubicaciones, etc. Establezcan las relaciones correctas entre estos 'Data Types', de manera que la información esté conectada y pueda ser gestionada de forma eficiente. Utilicen un diagrama o cualquier herramienta que les ayude a visualizar su base de datos. Asegúrense de que todos los miembros de sus equipos entiendan la estructura diseñada. ¡Tienen 10 minutos para planificar su modelo de datos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 32 "Cronómetro - 10 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 33 "Compartir Resultados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, por favor reúnanse con el equipo que tengan más cerca. Compartan los diseños de sus bases de datos. Analicen sus diferencias y similitudes, discutan qué elementos podrían mejorar y tomen notas de lo que les parezca más relevante para futuras implementaciones. La idea es nutrirse de la perspectiva de otros equipos y enriquecer sus propios diseños."</td>
+           </tr>
+           <tr>
+               <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 34 "Cronómetro - 2 Minutos".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 35 "Revisión de Objetivos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, revisemos lo que hemos logrado el día de hoy. Hemos aprendido sobre el proceso de diseño de bases de datos, comprendido la forma en la que se estructuran los datos en Bubble, y hemos diseñado las bases de datos para nuestras apps de hosting. ¡Han dado un gran paso hacia aplicaciones más sólidas y funcionales!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 36 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente trabajo, Genios! Hoy demostraron su habilidad para planificar estructuras complejas. Su dedicación y esfuerzo en diseñar sus bases de datos merecen una recompensa. ¡You've Got Mon-e por su increíble trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🎁 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Premio a la atención y el conocimiento con una pregunta sorpresa.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 37 "Pregunta Easter Egg".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento del Easter Egg. Vamos a ver quién ha estado prestando atención a los detalles de la clase. Proyectaré una pregunta relacionada con un dato que mencioné durante el Brain Gym. Los tres primeros en levantar la mano tendrán la oportunidad de responder en voz baja y ganar Mon-e."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 38 "Pregunta del Dato Curioso".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Cuál fue el nombre de la institución que creó el primer programa de base de datos en 1963? ¡Levanten la mano si saben la respuesta! Recuerden, no digan la respuesta en voz alta."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 39 "Respuesta Correcta".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, voy a escuchar las respuestas. Tú primero, ven y dime tu respuesta al oído. Ahora tú, segundo, ¿qué opinas? Finalmente tú, tercero. ¡La respuesta correcta es el Instituto Tecnológico de Massachusetts (MIT)! Felicidades a los ganadores, se llevan Mon-e por su atención y conocimiento. ¡Excelente, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cerrar la misión y organizar el espacio de trabajo con respeto.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 40 "Honor de Dojo".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de honrar el Dojo. Asegúrense de que todo esté en su lugar, devuelvan las Magic Tablets y recojan cualquier material que hayan utilizado. Honrar nuestro espacio de trabajo es una parte importante de nuestra misión. ¡Gracias por su colaboración y por mantener nuestro espacio en orden!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
